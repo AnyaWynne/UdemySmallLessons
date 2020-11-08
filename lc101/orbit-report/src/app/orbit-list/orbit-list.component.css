@@ -30,3 +30,7 @@ th, td {
 warning {
     background-color: coral;
 }
+
+tr:nth-child(even) { 
+    background-color: whitesmoke; 
+} 
