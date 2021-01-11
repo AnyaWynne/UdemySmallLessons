@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <div class="form-group" ngModelGroup="stringForAFormName"  #formData="ngModelGroup">
+          <label for="email">Please enter your email address</label>
+          <input type="email" id="email" name="emailName" ngModel required email #emailAccess="ngModel">
+          <span class="help-block" *ngIf="!emailAccess.valid && emailAccess.touched">Please enter a valid email</span>
+          <div class="form-group">
+            <label for="type">Choose a level of subscription</label>
+            <select name="typeName" id="type" class="form-control" [ngModel]="setType" >
+              <option value="basic">
+                Basic
+              </option>
+              <option value="pro">
+                Pro
+              </option>
+              <option value="advanced">
+                Advanced
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="password">Please choose a password</label>
+          <input type="text" id="password" ngModel name="passwordName" required #passwordAccess="ngModel">
+          <span class="help-block" *ngIf="!passwordAccess.valid && passwordAccess.touched">Please enter a password</span>
+          <div>
+            <p *ngIf="!formData.valid && formData.touched">Please fill out all the fields with valid entries</p>
+            <button type="submit">Submit</button>
+          </div>
+          </div>
+        </div>
+      </form>
+      <hr>
+      <div *ngIf="submitted">
+        <h4>Your entries:</h4>
+      <p>Email: {{userEntry.email}}</p>
+      <p>Type of subscription: {{userEntry.type}}</p>
+      <p>Password: {{userEntry.password}}</p>
+      </div>
+    </div>
+  </div>
+</div>
